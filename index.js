@@ -17,7 +17,7 @@ let play = document.getElementById('play')
 let value = 0;
 let time = 0;
 
-let maxTime = [100, 80, 50];
+let maxTime = [60, 50, 30];
 let actualMax = 0
 
 var lvl = 0;
