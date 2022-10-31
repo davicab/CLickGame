@@ -1,0 +1,203 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+header{
+    width: 100%;
+    height: 100px;
+    background-color: #23243b;
+}
+.center{
+    width: 100%;
+    height: 100%;
+    background-color: #23243b;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.ball-float{
+    width: 50px;
+    height: 50px;
+    background-color: #FFF;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transition: 0s;
+    box-shadow: 2px 2px 2px white;
+}
+.time,
+.point{
+    font-size: 30px;
+    color: black;
+    width: 300px;
+    height: 100%;
+    background-color: #FFF;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.time span,
+.point span{
+    font-weight: 700;
+}
+.changes{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+.ball-container{
+    position: relative;
+    width: 0%;
+    height: 0%;
+    margin: auto;
+}
+.popUp{
+    position: absolute;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    background-color: #FFF;
+    border-radius: 12px;
+    left: -700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: 1s ease;
+}
+#play{
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    justify-content: center;
+    background-color: #81c4ff;
+    border-radius: 20px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#play:hover{
+    background-color: #609ed5;
+}
+.popBot{
+    display: flex;
+    gap: 30px;
+}
+.popTop{
+    font-size: 30px;
+    font-weight: 700;
+}
+.popMid{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+.popSize,
+.popTime{
+    width: 40%;
+    height: 100%;
+}
+.endPopUp{
+    position: absolute;
+    width: 100%;
+    max-width: 600px;
+    height: 250px;
+    background-color: #FFF;
+    border-radius: 12px;
+    right: -700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: 1s ease;
+}
+.endPopUp span{
+    font-size: 30px;
+    color: red;
+    font-weight: 600;
+}
+.restart{
+    width: 130px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #23243b;
+    color: #FFF;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: cursive;
+    border-radius: 30px;
+    
+    cursor: pointer;
+}
+.lvlButton{
+    border: none;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    opacity: .6;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+.lvlButton:hover{
+    opacity: 1;
+}
+.selected{
+    opacity: 1;
+    box-shadow: 1px 1px 1px #505050;
+}
+#facil{
+    background-color: aquamarine;
+}
+#medio{
+    background-color: #fffe7f;
+}
+#dificil{
+    background-color: #ff4141;
+}
+.sm-box{
+    width: 50%;
+    height: 50%;
+}
+.md-box{
+    width: 70%;
+    height: 70%;
+}
+.bg-box{
+    width: 100%;
+    height: 100%;
+}
+.unclickable{
+    pointer-events: none;
+}
+.slow-move{
+    transition: 1.5s;
+}
+.mid-move{
+    transition: 0.9s;
+}
+.fast-move{
+    transition: 0.2s;
+}
