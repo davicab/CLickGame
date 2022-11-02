@@ -33,6 +33,9 @@ function handleStart(){
     popUp.style.left = "30%";
     
     let buts = [easy, medium, hard]
+
+    
+    let startBut = document.querySelector(".goOn")
         
     let selSize = document.querySelector(".selectedSize")
     let selTime = document.querySelector(".selectedTime")
@@ -69,6 +72,14 @@ function handleStart(){
             }
         })
         
+    })
+
+    startBut.addEventListener(('mouseover'), () =>{
+        let increase = 0;
+        const myInterval = setInterval(function(a) {
+            increase++;
+        }, 500);
+        startBut.style.rotate = `${increase}deg`
     })
 }
 
@@ -151,6 +162,22 @@ function timer() {
         }
     }, 1000);
 }
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+  let x = e.pageX;
+  let y = e.pageY;
+
+  cursor.style.top = y + "px";
+  cursor.style.left = x + "px";
+  cursor.style.display = "block";
+
+});
+
+document.addEventListener("mouseout", () => {
+  cursor.style.display = "none";
+});
 
 // function callStorage(){
 //     let tried = 0;
