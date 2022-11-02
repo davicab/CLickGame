@@ -25,8 +25,8 @@ header{
     overflow: hidden;
 }
 .ball-float{
-    width: 50px;
-    height: 50px;
+    width: 0px;
+    height: 0px;
     background-color: #FFF;
     border-radius: 50%;
     position: absolute;
@@ -110,13 +110,27 @@ header{
     height: 100px;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    transition: 1s ease;
+    opacity: 0;
 }
-.popSize,
-.popTime{
-    width: 40%;
-    height: 100%;
+.gameSize,
+.gameTime,
+.gamePoint{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
-.endPopUp{
+.gameSize > span,
+.gameTime > span,
+.gamePoint > span{
+    min-width: 100px;
+}
+.endPopUp,
+.winPopUp{
     position: absolute;
     width: 100%;
     max-width: 600px;
@@ -131,7 +145,8 @@ header{
     gap: 40px;
     transition: 1s ease;
 }
-.endPopUp span{
+.endPopUp span,
+.winPopUp span{
     font-size: 30px;
     color: red;
     font-weight: 600;
@@ -200,4 +215,16 @@ header{
 }
 .fast-move{
     transition: 0.2s;
+}
+.sm-ball{
+    width: 25px;
+    height: 25px;
+}
+.md-ball{
+    width: 50px;
+    height: 50px;
+}
+.bg-ball{
+    width: 70px;
+    height: 70px;
 }

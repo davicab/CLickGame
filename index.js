@@ -1,12 +1,9 @@
 let moveBall = document.querySelectorAll(".ball-float")
-let pts = document.querySelector(".pointV")
-let seg = document.querySelector(".timeV")
 let popUp = document.querySelector(".popUp")
 let endPopUp = document.querySelector(".endPopUp")
+let winPopUp = document.querySelector(".winPopUp")
 let playBox = document.querySelector(".ball-container")
-// let prevPts = document.querySelector(".previousV")
-let selSize = document.querySelector(".selectedSize")
-let selTime = document.querySelector(".selectedTime")
+let popMid = document.querySelector(".popMid")
 
 let easy = document.getElementById('facil');
 let medium = document.getElementById('medio');
@@ -17,35 +14,66 @@ let play = document.getElementById('play')
 let value = 0;
 let time = 0;
 
-let maxTime = [60, 50, 30];
+let maxTime = [60, 40, 30];
 let actualMax = 0
 
-var lvl = 0;
+let requiredPts = [60, 75, 85]
+let actualPts = 0
 
-// var MyValues = {};
+let lvl = 0;
+
+// let MyValues = {};
 
 function restart(){
     window.location.reload();
 }
 
-var buts = [easy, medium, hard]
 
-buts.forEach((item, index) =>{  
-    let cut_but = [...buts]
-    cut_but.splice(index, 1);
-    item.addEventListener("click", () => {
-        lvl = item.value
-        actualMax = maxTime[lvl]
-        item.classList.add('selected')
-        cut_but.forEach(a =>{
-            a.classList.remove('selected')
-        })
-    })
+function handleStart(){
+    popUp.style.left = "30%";
     
-})
+    let buts = [easy, medium, hard]
+        
+    let selSize = document.querySelector(".selectedSize")
+    let selTime = document.querySelector(".selectedTime")
+    let selPoint = document.querySelector(".selectedPoint")
+
+    buts.forEach((item, index) =>{  
+        let cut_but = [...buts]
+        cut_but.splice(index, 1);
+        item.addEventListener("click", () => {
+            lvl = item.value
+            actualMax = maxTime[lvl]
+            actualPts = requiredPts[lvl]
+            popMid.style.opacity = "1"
+            item.classList.add('selected')
+            cut_but.forEach(a =>{
+                a.classList.remove('selected')
+            })
+            switch (lvl) {
+                case '0':
+                    selSize.innerHTML = "Grande"
+                    selTime.innerHTML = "60 segundos"
+                    selPoint.innerHTML = "60 pontos"
+                    break;
+                case '1':
+                    selSize.innerHTML = "Medio"
+                    selTime.innerHTML = "40 segundos"
+                    selPoint.innerHTML = "75 pontos"
+                    break;
+                case '2':
+                    selSize.innerHTML = "Pequeno"
+                    selTime.innerHTML = "30 segundos"
+                    selPoint.innerHTML = "85 pontos"
+                    break;
+            }
+        })
+        
+    })
+}
 
 window.addEventListener(('load'), () =>{
-    popUp.style.left = "30%";
+    handleStart()
     // prevPts.innerHTML = `${MyValues.tries} pontos anteriores`
 })
 
@@ -57,24 +85,31 @@ play.addEventListener(('click'), () =>{
 
 function callRun(){   
     moveBall.forEach((item, index) =>{
+        
+        let pts = document.querySelector(".pointV")
         switch (lvl) {
             case '0':
                 playBox.classList.add('sm-box')
+                moveBall[index].classList.add('bg-ball')
                 moveBall[index].classList.add('slow-move')
                 break;
             case '1':
                 playBox.classList.add('md-box')
+                moveBall[index].classList.add('md-ball')
                 moveBall[index].classList.add('mid-move')
                 break;
             case '2':
                 playBox.classList.add('bg-box')
+                moveBall[index].classList.add('sm-ball')
                 moveBall[index].classList.add('fast-move')
                 break;
         }
+
         let firstRandomX = Math.floor(Math.random() * 99) + 1;
         let firstRandomY = Math.floor(Math.random() * 99) + 1;
         moveBall[index].style.top = `${firstRandomX}%`;
         moveBall[index].style.right = `${firstRandomY}%`
+
         item.addEventListener(('click'), () =>{
             value++;
         
@@ -96,21 +131,29 @@ function callRun(){
 }
 
 function timer() {
+    let seg = document.querySelector(".timeV")
     const myInterval = setInterval(function(a) {
-        time++;
-        seg.innerHTML = `${time} segundos`;
+        actualMax--;
+        seg.innerHTML = `${actualMax} segundos`;
 
-        if(time == actualMax){
+        if(actualMax == 0){
             playBox.classList.add('unclickable')
-            endPopUp.style.left = "30%";
+            if(value >= actualPts){
+                winPopUp.style.left = "30%"
+                clearInterval(myInterval)
+            }else{
+                endPopUp.style.left = "30%";
+                clearInterval(myInterval)
+            }
             // callStorage()
             clearInterval(myInterval)
+            
         }
     }, 1000);
 }
 
 // function callStorage(){
-//     var tried = 0;
+//     let tried = 0;
 //     MyValues.tries = tried
 
 //     let storedTry = localStorage.getItem(MyValues.tries);

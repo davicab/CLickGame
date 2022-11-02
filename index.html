@@ -47,14 +47,20 @@
                     <button class="lvlButton" id="dificil" value="2">Dificil</button>
                 </div>
             </div>            
-            <!-- <div class="popMid">
-                <div class="popSize">
+            <div class="popMid">
+                <div class="gameSize">
+                    <span>Tamanho do alvo: </span>
                     <span class="selectedSize"></span>
                 </div>
-                <div class="popTime">
+                <div class="gamePoint">
+                    <span>Pontos necessarios: </span>
+                    <span class="selectedPoint"></span>
+                </div>
+                <div class="gameTime">
+                    <span>Tempo total: </span>
                     <span class="selectedTime"></span>
                 </div>
-            </div> -->
+            </div>
             <div class="play">
                 <button id="play">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +72,10 @@
         <div class="endPopUp">
             <span style="text-align: center;">Seu tempo acabou :( <br> Tente novamente</span>
             <button class="restart" onclick="restart()">Reiniciar</button>
+        </div>
+        <div class="winPopUp">
+            <span style="text-align: center;">Voce ganhou!!</span>
+            <button class="restart" onclick="restart()">Jogar Novamente</button>
         </div>
     </div>
 </body>
