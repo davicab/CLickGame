@@ -9,7 +9,6 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    cursor: none;
 }
 header{
     width: 100%;
@@ -35,6 +34,7 @@ header{
     right: 50%;
     top: 50%;
     transition: 0s;
+    cursor: pointer;
     box-shadow: 2px 2px 2px white;
 }
 .time,
@@ -235,38 +235,3 @@ header{
     width: 70px;
     height: 70px;
 }
-.cursor{
-    z-index: 999;
-    position: fixed;
-    background: #2696E8;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    pointer-events: none;
-    box-shadow: 0 0 20px #2696E8,
-                0 0 60px #2696E8,
-                0 0 100px #2696E8;
-    animation: colors 5s infinite;
-    transform: translate(-50%, -50%);
-    display: none;
-  }
-  
-  @keyframes colors{
-    0%{
-      filter: hue-rotate(0deg);
-    }
-    100%{
-      filter: hue-rotate(360deg);
-    }
-  }
-  
-  .cursor:before{
-    content: '';
-    position: absolute;
-    background: #2696E8;
-    width: 50px;
-    height: 50px;
-    opacity: 0.2;
-    transform: translate(-30%, -30%);
-    border-radius: 50%;
-  }
