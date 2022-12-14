@@ -4,6 +4,7 @@ let endPopUp = document.querySelector(".endPopUp")
 let winPopUp = document.querySelector(".winPopUp")
 let playBox = document.querySelector(".ball-container")
 let popMid = document.querySelector(".popMid")
+let missPts = document.querySelector(".missing-pts")
 
 let easy = document.getElementById('facil');
 let medium = document.getElementById('medio');
@@ -21,8 +22,6 @@ let requiredPts = [60, 75, 85]
 let actualPts = 0
 
 let lvl = 0;
-
-// let MyValues = {};
 
 function restart(){
     window.location.reload();
@@ -134,7 +133,10 @@ function callRun(){
             
             moveBall[index].style.top = `${randomY}%`;
             moveBall[index].style.right = `${randomX}%`
-            // MyValues.maxPts = value
+            
+            if(value >= actualPts){
+                pts.style.color = "gold"
+            }
         })
 
 
@@ -147,33 +149,51 @@ function timer() {
         actualMax--;
         seg.innerHTML = `${actualMax} segundos`;
 
+        if(actualMax <= 5){
+            seg.style.color = "red"
+        }
+
         if(actualMax == 0){
             playBox.classList.add('unclickable')
+            // callStorage(value)
             if(value >= actualPts){
                 winPopUp.style.left = "30%"
                 clearInterval(myInterval)
             }else{
                 endPopUp.style.left = "30%";
+                missedPts()
                 clearInterval(myInterval)
             }
-            // callStorage()
             clearInterval(myInterval)
-            
         }
+        
     }, 1000);
 }
 
-// function callStorage(){
-//     let tried = 0;
-//     MyValues.tries = tried
+function missedPts(){
+    let subtract = actualPts - value;
 
-//     let storedTry = localStorage.getItem(MyValues.tries);
+    missPts.innerHTML = `${subtract}`
+}
 
+// function callStorage(e){
+//     let tries = 1
+//     let storedTry = localStorage.getItem(tries);
+    
 //     if(!storedTry){
-//         localStorage.setItem(MyValues.tries, MyValues.maxPts)
+//         localStorage.setItem(tries, e)
 //     }
+    
 //     if(storedTry){
-//         MyValues.tries++;
+//         let keyUsed = parseInt(localStorage.key((localStorage.length) - 1));
+//         keyUsed++
+//         localStorage.setItem(keyUsed, e)
 //     }
+
+//     // for(var i=0, len=localStorage.length; i<len; i++) {
+//     //     var chave = localStorage.key(i);
+//     //     let valor = localStorage[chave];
+//     //     console.log(chave + " => " + valor);
+//     // }
 
 // }
